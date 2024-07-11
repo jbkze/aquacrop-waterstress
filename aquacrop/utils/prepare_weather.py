@@ -19,7 +19,7 @@ weather_file_path): `str):  file location of weather data
 weather_df (pandas.DataFrame):  weather data for simulation period
 
     """
-
+    
     weather_df = pd.read_csv(weather_file_path, header=0, delim_whitespace=True)
 
     assert len(weather_df.columns) == 7

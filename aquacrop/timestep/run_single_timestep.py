@@ -530,6 +530,17 @@ def solution_single_time_step(
         NewCond.YieldPot,
     ]
 
+    outputs.water_stress[row_day, :] = [
+        clock_struct.time_step_counter,
+        clock_struct.season_counter,
+        NewCond.dap,
+        NewCond.exp,  # Water stress coefficient for leaf expansion
+        NewCond.sto,  # Water stress coefficient for stomatal closure
+        NewCond.sen,  # Water stress coefficient for senescence
+        NewCond.pol,  # Water stress coefficient for pollination failure
+        NewCond.sto_lin  # Mean water stress coefficient for stomatal closure
+    ]
+
     # Final output (if at end of growing season)
     if clock_struct.season_counter > -1:
         if (

@@ -26,6 +26,7 @@ class Output:
         self.water_storage = np.zeros((len(time_span), 3 + len(initial_th)))
         self.water_flux = np.zeros((len(time_span), 16))
         self.crop_growth = np.zeros((len(time_span), 15))
+        self.water_stress = np.zeros((len(time_span), 8))
         self.final_stats = pd.DataFrame(
             columns=[
                 "Season",

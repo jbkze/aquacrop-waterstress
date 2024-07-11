@@ -110,7 +110,15 @@ class InitialCondition:
         self.dap = 0
         self.e_pot = 0
         self.t_pot = 0
-
+        
+        # water stress
+        self.exp = 0
+        self.sto = 0
+        self.sen = 0
+        self.pol = 0
+        self.sto_lin = 0
+        
+        
         # States
         self.pre_adj = False
         self.crop_mature = False

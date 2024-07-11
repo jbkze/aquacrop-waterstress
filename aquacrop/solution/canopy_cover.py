@@ -132,7 +132,13 @@ def canopy_cover(
             et0,
             beta,
         )
-
+        
+        NewCond.exp = water_stress_coef.exp
+        NewCond.sto = water_stress_coef.sto
+        NewCond.sen = water_stress_coef.sen
+        NewCond.pol = water_stress_coef.pol
+        NewCond.sto_lin = water_stress_coef.sto_lin
+        
         # water_stress(Crop, NewCond, root_zone_depletion, taw, et0, beta)
 
         # Get canopy cover growth time

@@ -10,6 +10,7 @@ def outputs_when_model_is_finished(
     flux_output: "ndarray",
     water_output: "ndarray",
     growth_outputs: "ndarray",
+    water_stress_outputs: "ndarray",
     steps_are_finished: bool,
 ):
     """
@@ -24,6 +25,8 @@ def outputs_when_model_is_finished(
         water_output (numpy.array):  water storage in each compartment
 
         growth_outputs (numpy.array):  crop growth variables
+
+        water_stress_outputs (numpy.array):  water stress variables
 
         n_seasons (int):  total number of seasons being simulated
 
@@ -90,7 +93,26 @@ def outputs_when_model_is_finished(
                 "YieldPot",
             ],
         )
+        
+        water_stress_output_df = pd.DataFrame(
+            water_stress_outputs,
+            columns=[
+                "time_step_counter",
+                "season_counter",
+                "dap",
+                #"Water stress coefficient for leaf expansion",
+                #"Water stress coefficient for stomatal closure",
+                #"Water stress coefficient for senescence",
+                #"Water stress coefficient for pollination failure",
+                #"Mean water stress coefficient for stomatal closure",
+                "exp",
+                "sto",
+                "sen",
+                "pol",
+                "sto_lin"
+            ],
+        )
 
-        return flux_output_df, water_output_df, growth_outputs_df
+        return flux_output_df, water_output_df, growth_outputs_df, water_stress_output_df
 
     return False

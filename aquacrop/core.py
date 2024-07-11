@@ -363,6 +363,7 @@ class AquaCropModel:
             outputs.water_flux,
             outputs.water_storage,
             outputs.crop_growth,
+            outputs.water_stress,
             self.__steps_are_finished,
         )
 
@@ -371,6 +372,7 @@ class AquaCropModel:
                 outputs.water_flux,
                 outputs.water_storage,
                 outputs.crop_growth,
+                outputs.water_stress
             ) = final_water_flux_growth_outputs
 
         return clock_struct, _init_cond, param_struct, outputs
@@ -420,6 +422,18 @@ class AquaCropModel:
         """
         if self.__has_model_executed:
             return self._outputs.crop_growth
+        else:
+            raise ValueError(
+                "You cannot get results without running the model. "
+                + "Please execute the run_model() method."
+            )
+
+    def get_water_stress(self):
+        """
+        Return water stress variables
+        """
+        if self.__has_model_executed:
+            return self._outputs.water_stress
         else:
             raise ValueError(
                 "You cannot get results without running the model. "
