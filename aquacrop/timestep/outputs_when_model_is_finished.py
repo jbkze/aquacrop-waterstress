@@ -79,6 +79,7 @@ def outputs_when_model_is_finished(
                 "time_step_counter",
                 "season_counter",
                 "dap",
+                "growth_stage",
                 "gdd",
                 "gdd_cum",
                 "z_root",
@@ -91,6 +92,8 @@ def outputs_when_model_is_finished(
                 "DryYield",
                 "FreshYield",
                 "YieldPot",
+                "crop_dead",
+
             ],
         )
         

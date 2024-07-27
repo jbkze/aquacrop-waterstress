@@ -516,6 +516,7 @@ def solution_single_time_step(
         clock_struct.time_step_counter,
         clock_struct.season_counter,
         NewCond.dap,
+        NewCond.growth_stage,
         gdd,
         NewCond.gdd_cum,
         NewCond.z_root,
@@ -528,6 +529,8 @@ def solution_single_time_step(
         NewCond.DryYield,
         NewCond.FreshYield,
         NewCond.YieldPot,
+        NewCond.crop_dead,
+
     ]
 
     outputs.water_stress[row_day, :] = [
