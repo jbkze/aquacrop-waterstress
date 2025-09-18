@@ -2375,6 +2375,7 @@ def canopy_cover(Crop, prof, Soil_zTop, InitCond, GDD, Et0, GrowingSeason):
             Et0,
             beta,
         )
+        
 
         # water_stress(Crop, NewCond, Dr, TAW, Et0, beta)
 
@@ -2600,6 +2601,8 @@ def canopy_cover(Crop, prof, Soil_zTop, InitCond, GDD, Et0, GrowingSeason):
                         Et0,
                         beta,
                     )
+                    
+                    NewCond.Ksw = Ksw
 
                     # Ksw = water_stress(Crop, NewCond, Dr, TAW, Et0, beta)
                     if Ksw.Sen > 0.99999:
@@ -3532,6 +3535,8 @@ def transpiration(
             beta,
         )
         # Ksw = water_stress(Crop, NewCond, Dr, TAW, Et0, beta)
+        
+        NewCond.Ksw = Ksw
 
         # Calculate aeration stress coefficients
         Ksa_Aer, NewCond.AerDays = _aeration_stress(NewCond.AerDays, Crop.LagAer, thRZ)
@@ -4513,6 +4518,10 @@ def harvest_index(prof, Soil_zTop, Crop, InitCond, Et0, Tmax, Tmin, GrowingSeaso
             beta,
         )
         Ksw = KswNT(Exp=Ksw_Exp, Sto=Ksw_Sto, Sen=Ksw_Sen, Pol=Ksw_Pol, StoLin=Ksw_StoLin )
+        
+        
+        NewCond.Ksw = Ksw
+        
         # Calculate temperature stress
         (Kst_PolH,Kst_PolC) = _temperature_stress(Crop, Tmax, Tmin)
         Kst = KstNT(PolH=Kst_PolH,PolC=Kst_PolC)

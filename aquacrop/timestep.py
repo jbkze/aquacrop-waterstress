@@ -353,6 +353,8 @@ def solution(InitCond, ParamStruct, ClockStruct, weather_step, Outputs):
     # 17. Harvest index
     NewCond = harvest_index(Soil.Profile, Soil.zTop, Crop, NewCond, Et0, Tmax, Tmin, GrowingSeason)
 
+    Ksw = NewCond.Ksw
+
     # 18. Crop yield
     if GrowingSeason == True:
         # Calculate crop yield (tonne/ha)
@@ -475,6 +477,8 @@ def solution(InitCond, ParamStruct, ClockStruct, weather_step, Outputs):
             # Set harvest flag
             NewCond.HarvestFlag = True
 
+    NewCond.Ksw = Ksw
+    
     return NewCond, ParamStruct, Outputs
 
 

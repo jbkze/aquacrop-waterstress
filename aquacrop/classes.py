@@ -1587,6 +1587,7 @@ class InitCondClass:
         self.Depletion = 0
         self.TAW = 0
 
+        self.Ksw = KswClass()
 
 
 

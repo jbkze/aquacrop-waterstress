@@ -85,10 +85,10 @@ def read_weather_inputs(ClockStruct, weather_df):
 
     # get the start and end dates of simulation
     start_date = ClockStruct.SimulationStartDate
-    end_date = ClockStruct.SimulationEndDate
-
-    assert weather_df.Date.iloc[0] <= start_date
-    assert weather_df.Date.iloc[-1] >= end_date
+    end_date = ClockStruct.SimulationEndDate    
+    
+    assert weather_df.Date.iloc[0] <= start_date, f"Start date of weather data ({weather_df.Date.iloc[0]}) is after simulation start date ({start_date})"
+    assert weather_df.Date.iloc[-1] >= end_date, f"End date of weather data ({weather_df.Date.iloc[-1]}) is before simulation end date ({end_date})"
 
     # remove weather data outside of simulation dates
     weather_df = weather_df[weather_df.Date >= start_date]
